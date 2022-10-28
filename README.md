@@ -19,7 +19,7 @@ The JW Library file will be modified, so make a backup of this file if needed.
 Usage: ./jwlibrary_zip <JW folder>
 ```
 
-- <JW folder>: WITHOUT the .jwlibrary extension
+JW folder: WITHOUT the .jwlibrary extension
                folder created by jwlibrary_deflate
                bears the name of the JW backup file without the .jwlibrary extension
                contains the .jwlibrary file, the manifest.json and the userData.db
