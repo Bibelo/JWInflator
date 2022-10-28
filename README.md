@@ -6,12 +6,12 @@
 $ ./jwlibrary_unzip -h
 ```
 
-    Usage: ./jwlibrary_unzip <JW backup>.jwlibrary
+Usage: ./jwlibrary_unzip <JW backup>.jwlibrary
 
-    Will simply expand to a folder containing the .jwlibrary file, the manifest.json and the userData.db.
-    You can then simply edit the userData.db with SQLite software.
+Will simply expand to a folder containing the .jwlibrary file, the manifest.json and the userData.db.
+You can then simply edit the userData.db with SQLite software.
 
-    The JW Library file will be modified, so make a backup of this file if needed.
+The JW Library file will be modified, so make a backup of this file if needed.
 
 ## ZIP
 
