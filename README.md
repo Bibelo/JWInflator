@@ -1,6 +1,6 @@
 # JWInflator
 
-# UNZIP
+## UNZIP
 
 ```
 $ ./jwlibrary_unzip -h
@@ -12,6 +12,8 @@ $ ./jwlibrary_unzip -h
     You can then simply edit the userData.db with SQLite software.
 
     The JW Library file will be modified, so make a backup of this file if needed.
+
+## ZIP
 
 ```
 Usage: ./jwlibrary_zip <JW folder>
