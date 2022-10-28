@@ -1,0 +1,35 @@
+#!/bin/bash
+set -o errexit
+set -o nounset
+set -o pipefail
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -o xtrace
+fi
+
+if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
+    echo "
+    Usage: $0 <JW backup>.jwlibrary
+
+    Will simply expand to a folder containing the .jwlibrary file, the manifest.json and the userData.db.
+    You can then simply edit the userData.db with SQLite software.
+
+    The JW Library file will be modified, so make a backup of this file if needed.
+"
+    exit
+fi
+
+cd "$(dirname "$0")"
+
+main() {
+
+    file_withext=$1
+    file_noext=${file_withext%%.jwlibrary}
+    
+    mkdir $file_noext
+    mv $file_withext $file_noext/
+    cd $file_noext/
+    
+    unzip $file_withext
+}
+
+main "$@"

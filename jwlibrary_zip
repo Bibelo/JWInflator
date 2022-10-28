@@ -1,0 +1,43 @@
+#!/bin/bash
+set -o errexit
+set -o nounset
+set -o pipefail
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -o xtrace
+fi
+
+if [[ "${1-}" =~ ^-*h(elp)?$ ]]; then
+    echo "Usage: $0 <JW folder>
+
+    - <JW folder>: WITHOUT the .jwlibrary extension
+                   folder created by jwlibrary_deflate
+                   bears the name of the JW backup file without the .jwlibrary extension
+		   contains the .jwlibrary file, the manifest.json and the userData.db
+    
+    Will simply update the existing .jwlibrary file with the modified userData.db and the manifest.json.
+    Will remove these last two files so make a backup if needed.
+"
+    exit
+fi
+
+cd "$(dirname "$0")"
+
+main() {
+    file_noext=${1%%/}
+    file_withext=${file_noext}.jwlibrary
+    
+    cd $file_noext
+    sed -i 's/\"hash\":\"[a-z0-9]*\"/\"hash\":\"\"/' manifest.json
+    
+    zip $file_withext manifest.json
+    zip $file_withext userData.db
+
+    rm manifest.json userData.db
+    mv $file_withext ..
+    cd ..
+    rmdir $file_noext
+}
+
+main "$@"
+
+
